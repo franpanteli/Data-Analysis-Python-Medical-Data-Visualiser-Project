@@ -92,6 +92,7 @@ def draw_cat_plot():
 	-> Setting the style we want the seaborn heatmap to use 
 	-> Then creating and saving the heatmap we want the function to return, and having it return it 
 -> So we've created a function which generates heatmaps  
+-> We are first generating an array of correlations using .corr(), and then we are converting them into a heatmap using seaborn  
 """"
 
 def draw_heat_map():
