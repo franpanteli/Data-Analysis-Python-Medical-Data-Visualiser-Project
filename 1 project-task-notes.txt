@@ -1,0 +1,109 @@
+These are my notes on the project task page. This project is called "Medical Data Visualizer." The URL for the page which these notes are on is https://www.freecodecamp.org/learn/data-analysis-with-python/data-analysis-with-python-projects/medical-data-visualizer
+
+- Clone the project boilerplate files in a Gitpod environment 
+- Complete the course material before starting the project: 
+	-> Python for Everybody Video Course (14 hours) <- https://www.freecodecamp.org/news/python-for-everybody/
+	-> How to Analyze Data with Python Pandas (10 hours) <- https://www.freecodecamp.org/news/how-to-analyze-data-with-python-pandas/
+- Visualising and making calculations from medical examination data 
+	-> We are using matplotlib, seaborn, and pandas for this 
+
+- We are given the project data: 
+	-> We are given a medical dataset in `medical_examination.csv`
+	-> Each of the rows in that dataset is a person, and each of the columns is for a data attribute (e.g age / height / weight / gender / etc)
+	-> This is the data we are analysing -> we are looking for correlations between the lifestyle choices of people and their health outcomes 
+
+- What we are doing 
+	-> Perform unit tests as we go along, by using `test_module.py`
+	-> We create a chart 
+		-> We are showing the counts of good and bad outcomes for the cholesterol, gluc, alco, active, and smoke variables for patients with cardio=1 and cardio=0 in different panels
+	-> Then we complete the following tasks on the data 
+		-> medical_data_visualizer.py <- This is the project .py file, where we write the code  
+		-> We add an overweight column to the data (True or False) 
+			-> Calculate the BMI of the people 
+			-> If that value is > 25 <- This means the person is overweight 
+			-> We want to code this data into boolean values -> 0 means NOT overweight and 1 means overweight 
+
+		-> Normalise the data:   
+			-> We are making 0 always good and 1 always bad 	
+			-> If cholesterol or gluc is 1, we make the value 0 
+			-> If cholesterol or gluc is more than 1, we make this value 1 
+			-> We are saying if the cholesterol or gluc is 1, all of these values are good and therefore this parameter is 0
+			-> Then if the cholesterol or gluc is 0, all of these values are bad and therefore the value of this parameter is 1
+
+		-> Cardio plots:
+			-> We are converting the data into long format
+			-> Then we are creating a chart that shows the value counts of the categorical features
+				-> Use the catplot() method in the seaborn module 
+			-> We want one chart for each cardio value 
+
+		-> Cleaning the data:
+			-> We are then getting rid of the invalid data <- data whose value doesn't make sense given the context 
+			-> Diastolic pressure is higher than systolic <- We clean this data
+			-> Height is less than the 2.5th percentile 
+			-> Height is more than the 97.5th percentile
+			-> Weight is less than the 2.5th percentile         
+			-> Weight is more than the 97.5th percentile
+
+		-> Correlation matrix:
+			-> We then want to create a correlation matrix using the dataset 
+			-> This is the same as a heatmap
+			-> We make it using the seaborn heatmap() module 
+			-> We are masking the upper triangle -> there are charts in the project boilerplate files which are what we are aiming for this to output 
+			-> When variables are set to None, set them to the correct code 
+
+- Instructions 
+	-> We have the medical_data_visualizer.py file
+	-> This is the file we are writing the Python in 
+	-> We use main.py to test the code <- the unit tests for this are in the test_module.py file 
+	-> In the medical_data_visualizer.py file:
+		-> We first import the data from the medical_examination.csv file 
+		-> We set this equal to a variable called `df`
+		-> We add an 'overweight' column to this data frame <- This is going to contain Trues and False's which tell us if the BMI of a person is above 25 or not 
+		-> Then we normalise the data with an if block: 
+			-> If 0 is always good and 1 is always bad 
+			-> If the value of cholesterol or gluc is 1, then we set this value to 0 
+			-> If the value of cholesterol or gluc is more than 1, then we set this value equal to 1 
+		-> Then we draw a categorical plot in the draw_cat_plot function 
+			-> We create a dataframe for the cat plot using pd.melt
+			-> This has to include values from cholesterol, gluc, smoke, alco, active, and overweight in the df_cat variable
+
+		-> Then we group and reformat the data in df_cat:
+			-> We are splitting this by cardio 
+			-> We want to show the counts of each feature 
+			-> We are renaming one of the columns for the catplot to work correctly 
+		-> Generating a seaborn heatmap:
+			-> We convert the data into `long` format 
+			-> Then we create a chart that shows the value counts of the categorical features 
+			-> We do this by using sns.catplot()
+			-> We take the output from this and store it in the `fig` variable 
+			-> There are two lines which we don't change
+
+		-> Then we draw a heat map in the `draw_heat_map` function 
+
+		-> Cleaning the data in the df_heat variable:
+			-> We filter out the following patient segments which represent incorrect data <- we are getting rid of invalid data 
+			-> Height is less than the 2.5th percentile 
+			-> Height is more than the 97.5th percentile
+			-> Weight is less than the 2.5th percentile
+			-> Weight is more than the 97.5th percentile
+			-> We are getting rid of all of the data which is invalid 
+
+		-> Generating more seaborn heatmaps: 
+			-> We then calculate the correlation matrix and store it in the `corr` variable 
+			-> We generate a mask for the upper triangle 
+				-> We store this in the `mask` variable 
+				-> Then we set up the matplotlib figure
+			-> We are plotting the correlation matrix using the method provided by the seaborn library <- sns.heatmap()
+
+		-> Submitting the project files:
+			-> medical_data_visualizer.py <- We are writing all of the code in this file  
+			-> main.py <- We are then using this file to test the code 
+			-> test_module.py <- This contains the unit tests for the project  
+
+-> In short:
+	-> Clone the project files in a Gitpod environment 
+	-> Complete the tasks to process the medical data <- this in the medical_data_visualizer.py file 
+	-> Test the code we come up with as we do this in the main.py file 
+		-> test_module.py <- This is the file which contains these tests
+	-> Once the tests are passing, then we push the files to a GitHub repository 
+	-> We take the URL of that repository and submit it to the same page which these notes are made on 
