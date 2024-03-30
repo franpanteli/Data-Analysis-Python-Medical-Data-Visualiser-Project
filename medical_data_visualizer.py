@@ -36,7 +36,7 @@ df['cholesterol'] = df['cholesterol'].map(norm_dict)
 df['gluc'] = df['gluc'].map(norm_dict)
 
 # Draw Categorical Plot
-""""
+"""
 -> Defining the draw_cat_plot function 
 -> This is a plotting function, which returns a figure 
 -> We want to generate a figure 
@@ -57,7 +57,7 @@ df['gluc'] = df['gluc'].map(norm_dict)
     -> So we have the figure which we want the function to return set equal to the `fig` variable 
         -> We then save and return this figure 
         -> Running this function will return a catplot
-""""
+"""
 
 def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` with selected columns
@@ -75,7 +75,7 @@ def draw_cat_plot():
     return fig
 
 # Draw Heat Map
-""""
+"""
 -> Defining the draw_heat_map function 
 -> This is another plotting function, which returns a second figure 
 -> This is the function which we want to return a heatmap 
@@ -93,7 +93,7 @@ def draw_cat_plot():
 	-> Then creating and saving the heatmap we want the function to return, and having it return it 
 -> So we've created a function which generates heatmaps  
 -> We are first generating an array of correlations using .corr(), and then we are converting them into a heatmap using seaborn  
-""""
+"""
 
 def draw_heat_map():
     # Clean the data based on given conditions
