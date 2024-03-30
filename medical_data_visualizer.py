@@ -1,9 +1,15 @@
+# Import modules 
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the dataset
+"""
+    -> We are importing the data from the project 'medical_examination.csv' file 
+    -> This is the medical data which we are provided as part of the problem 
+    -> We are taking this CSV data and importing it into the project in a variable called df
+"""
 df = pd.read_csv('medical_examination.csv')
 
 # Add 'overweight' column
