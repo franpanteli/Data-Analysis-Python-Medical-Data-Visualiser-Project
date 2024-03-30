@@ -77,25 +77,21 @@ def draw_cat_plot():
 # Draw Heat Map
 """"
 -> Defining the draw_heat_map function 
--> This is a plotting function, which returns a figure 
--> We want to generate a figure 
--> We first generate a data frame for the cat plot <- This is equal to the df_cat variable: 
-    -> This is done with the .melt method  <- We are transforming the data frame into a new one for plotting categorical data
-        -> It is transforming the data from wide to long format
-        -> Melting something is telling it which columns to transform into rows 
-        -> The arguments to this tell the code which columns in the data frame to melt and which ones to leave alone 
-    -> The second line in this section defines a new data frame and sets it equal to the variable called `df_cat`
-        -> This groups the data frame we just manipulated according to its different attributes ('variable', 'value' and 'cardio')
-        -> We then count the number of elements in each of these columns, using the .count method 
-        -> We rename the values in the columns and reset the index of the database 
-
--> We then create a heatmap for the plot with the seaborn module:  
-    -> We have the database which we want to create the heatmap with, df_cat 
-    -> We first set the style of the plot to whitegrid using the .set_style method 
-    -> Then we create the catplot with the seaborn module using the .catplot method and set this equal to the `fig` variable 
-    -> So we have the figure which we want the function to return set equal to the `fig` variable 
-        -> We then save and return this figure 
-        -> Running this function will return a catplot
+-> This is another plotting function, which returns a second figure 
+-> This is the function which we want to return a heatmap 
+-> We first define a dataframe which we want to create this for -> This is the df_heat variable 
+-> We are setting the columns of this dataframe equal to the columns of the `df` dataframe, but we are also  filtering out the 
+    data which we don't want 
+-> We are assuming that invalid data is the data at the extremes of this distribution 
+-> We then define a heat map and set it equal to the `corr` variable 
+-> We then define another variable called mask
+	-> This takes the triangle at the top of the heat map matrix 
+	-> We are zeroing out the lower part of this matrix  
+-> Then we generate the figure which we want the function to return 
+	-> We do this using 12x12 subplots 
+	-> Setting the style we want the seaborn heatmap to use 
+	-> Then creating and saving the heatmap we want the function to return, and having it return it 
+-> So we've created a function which generates heatmaps  
 """"
 
 def draw_heat_map():
