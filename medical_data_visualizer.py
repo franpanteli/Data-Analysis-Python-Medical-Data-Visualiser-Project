@@ -13,14 +13,52 @@ import numpy as np
 df = pd.read_csv('medical_examination.csv')
 
 # Add 'overweight' column
+"""
+    -> In this line, we are adding a column to the dataset, called 'overweight'
+    -> We set it equal to the values which we want it to store
+    -> We want this to be an entire column of boolean values, which tell us if the person is overweight or not
+    -> We do this using the numpy .where method 
+    -> We set this equal to the BMI of the people (using a calculation), and then asking the computer to calculate if these 
+        BMIs are over 25 or not 
+"""
 df['overweight'] = np.where((df['weight'] / ((df['height']/100)**2)) > 25, 1, 0)
 
 # Normalise data: 0 for good, 1 for bad
+"""
+	-> To normalise the data 
+	-> We first define a dictionary of three key-value pairs which we want to normalise the results between 
+	-> The bottom two lines in this section take the 'cholesterol' and 'gluc' columns of the data frame and normalise them 
+        according to these dictionary values 
+	-> We are using the .map method to perform this normalisation 
+"""
 norm_dict = {1: 0, 2: 1, 3: 1}
 df['cholesterol'] = df['cholesterol'].map(norm_dict)
 df['gluc'] = df['gluc'].map(norm_dict)
 
 # Draw Categorical Plot
+""""
+-> Defining the draw_cat_plot function 
+-> This is a plotting function, which returns a figure 
+-> We want to generate a figure 
+-> We first generate a data frame for the cat plot <- This is equal to the df_cat variable: 
+    -> This is done with the .melt method  <- We are transforming the data frame into a new one for plotting categorical data
+        -> It is transforming the data from wide to long format
+        -> Melting something is telling it which columns to transform into rows 
+        -> The arguments to this tell the code which columns in the data frame to melt and which ones to leave alone 
+    -> The second line in this section defines a new data frame and sets it equal to the variable called `df_cat`
+        -> This groups the data frame we just manipulated according to its different attributes ('variable', 'value' and 'cardio')
+        -> We then count the number of elements in each of these columns, using the .count method 
+        -> We rename the values in the columns and reset the index of the database 
+
+-> We then create a heatmap for the plot with the seaborn module:  
+    -> We have the database which we want to create the heatmap with, df_cat 
+    -> We first set the style of the plot to whitegrid using the .set_style method 
+    -> Then we create the catplot with the seaborn module using the .catplot method and set this equal to the `fig` variable 
+    -> So we have the figure which we want the function to return set equal to the `fig` variable 
+        -> We then save and return this figure 
+        -> Running this function will return a catplot
+""""
+
 def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` with selected columns
     df_cat = pd.melt(df, id_vars=['cardio'], value_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
@@ -37,6 +75,29 @@ def draw_cat_plot():
     return fig
 
 # Draw Heat Map
+""""
+-> Defining the draw_heat_map function 
+-> This is a plotting function, which returns a figure 
+-> We want to generate a figure 
+-> We first generate a data frame for the cat plot <- This is equal to the df_cat variable: 
+    -> This is done with the .melt method  <- We are transforming the data frame into a new one for plotting categorical data
+        -> It is transforming the data from wide to long format
+        -> Melting something is telling it which columns to transform into rows 
+        -> The arguments to this tell the code which columns in the data frame to melt and which ones to leave alone 
+    -> The second line in this section defines a new data frame and sets it equal to the variable called `df_cat`
+        -> This groups the data frame we just manipulated according to its different attributes ('variable', 'value' and 'cardio')
+        -> We then count the number of elements in each of these columns, using the .count method 
+        -> We rename the values in the columns and reset the index of the database 
+
+-> We then create a heatmap for the plot with the seaborn module:  
+    -> We have the database which we want to create the heatmap with, df_cat 
+    -> We first set the style of the plot to whitegrid using the .set_style method 
+    -> Then we create the catplot with the seaborn module using the .catplot method and set this equal to the `fig` variable 
+    -> So we have the figure which we want the function to return set equal to the `fig` variable 
+        -> We then save and return this figure 
+        -> Running this function will return a catplot
+""""
+
 def draw_heat_map():
     # Clean the data based on given conditions
     df_heat = df[
