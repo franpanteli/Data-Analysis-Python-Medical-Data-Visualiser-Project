@@ -7,7 +7,7 @@ I independently completed freeCodeCamp's [Data Analysis with Python](https://www
 Notes on the task brief for this project were first written, which are [here](https://github.com/franpanteli/Data-Analysis-Python-Medical-Data-Visualiser-Project/blob/main/1%20project-task-notes.txt). The project boilerplate files were next cloned in a Gitpod environment. This included CSV data involving the medical information of patients ([medical_examination.csv](https://github.com/franpanteli/Data-Analysis-Python-Medical-Data-Visualiser-Project/blob/main/medical_examination.csv)). Python was desired which produced two output plots for this data. Two aim plots were provided for this, which are in the [Aim](https://github.com/franpanteli/Data-Analysis-Python-Medical-Data-Visualiser-Project/tree/main/Aim) directory in this repository and also given below.
 
 #### Aim Plots
-<img width="1076" alt="Screenshot 2024-04-01 at 15 36 04" src="https://github.com/franpanteli/Data-Analysis-Python-Medical-Data-Visualiser-Project/assets/131474705/b04b46d5-af5d-426d-b13a-bec945c30930">
+<img width="757" alt="Screenshot 2024-04-01 at 15 39 10" src="https://github.com/franpanteli/Data-Analysis-Python-Medical-Data-Visualiser-Project/assets/131474705/3d1fd6ba-6b78-4d04-bb30-a047410a69ac">
 
 <img width="560" alt="Screenshot 2024-04-01 at 15 36 31" src="https://github.com/franpanteli/Data-Analysis-Python-Medical-Data-Visualiser-Project/assets/131474705/5d06df44-a968-4ea2-889f-1446ab9a035f">
 
